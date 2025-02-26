@@ -1,5 +1,6 @@
 from langchain_ollama import OllamaLLM
 from ollama import chat, ChatResponse
+from open_app import open_application
 
 while True:
     user_input = input("Enter your question: ")  # Always shows this prompt first
@@ -7,8 +8,6 @@ while True:
     if user_input.lower() == "bye":
         print("Goodbye!")
         break
-    
-    from open_app import open_application
     
     if user_input.lower() == "open":  # Only opens an app if user types "open"
         app_name = input("Enter the name of the application to open: ")

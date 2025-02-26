@@ -1,8 +1,13 @@
 import os
 import subprocess
 
-def find_and_open_app(app_name):
-    search_dirs = ["C:\\Program Files", "C:\\Program Files (x86)", "C:\\Users\\haneu\\AppData\\Local\\Microsoft\\WindowsApps", "C:\\Users\\haneu\\Desktop\\Program"]
+def open_application(app_name):
+    search_dirs = [
+        "C:\\Program Files", 
+        "C:\\Program Files (x86)", 
+        "C:\\Users\\haneu\\AppData\\Local\\Microsoft\\WindowsApps", 
+        "C:\\Users\\haneu\\Desktop\\Program"
+    ]
     
     for directory in search_dirs:
         for root, _, files in os.walk(directory):
@@ -18,6 +23,7 @@ def find_and_open_app(app_name):
                         return
     print(f"{app_name}.exe not found.")
 
-# Example usage
-app_name = input("Enter the name of the application to open: ")
-find_and_open_app(app_name)
+# ✅ Prevent automatic execution when imported
+if __name__ == "__main__":
+    app_name = input("Enter the name of the application to open: ")
+    open_application(app_name)
