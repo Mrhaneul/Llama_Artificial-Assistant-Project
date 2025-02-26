@@ -7,6 +7,10 @@ while True:
     if user_input.lower() == "bye":
         print("Goodbye!")
         break
+    if user_input.lower() == "open":
+        app_name = input("Enter the name of the application to open: ")
+        open_application(app_name)
+        continue
 
     response: ChatResponse = chat(model='llama3.2', messages=[
       {
@@ -15,6 +19,6 @@ while True:
       },
     ])
 
-    print(response['message']['content'])
+    #print(response['message']['content'])
     # or access fields directly from the response object
     print(response.message.content)
