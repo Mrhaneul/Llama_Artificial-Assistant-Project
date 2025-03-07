@@ -15,8 +15,11 @@ while True:
         continue  # Restart the loop without calling the chat model
 
     # Call the AI chat only if the user is not opening an app
-    response: ChatResponse = chat(model='llama3.2', messages=[
+    messages = [
         {'role': 'user', 'content': user_input},
-    ])
+    ]
 
-    print(response.message.content)
+    for part in chat('llama3.2', messages=messages, stream=True):
+        print(part['message']['content'], end='', flush=True)
+
+    print()  # Print a newline after the response
